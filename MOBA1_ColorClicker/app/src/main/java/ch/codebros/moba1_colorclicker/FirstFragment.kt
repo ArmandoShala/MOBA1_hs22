@@ -1,11 +1,11 @@
 package ch.codebros.moba1_colorclicker
 
 import android.os.Bundle
-import android.os.SystemClock.elapsedRealtime
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TableRow
 import androidx.fragment.app.Fragment
 import ch.codebros.moba1_colorclicker.databinding.FragmentFirstBinding
 import java.util.*
@@ -18,10 +18,10 @@ class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private var buttons: MutableList<Button> = mutableListOf()
     private var _amountOfButtons: Int = 5
-    private var score: Float = 0F
     private var clicks: Int = 0
     private var startTimer: Long = 0
     private var endTimer: Long = 0
+    private var totalTime: Long = 0
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
@@ -58,21 +58,29 @@ class FirstFragment : Fragment() {
     }
 
     private fun generateButtons() {
-        val active = true
-        // generate buttons
-        for (i in 0 until amountOfButtons()) {
-            val button = Button(context)
-            button.text = "$i"
-            button.id = i
-            button.tag = active
-            button.setOnClickListener { view -> onButtonClick(view) }
-            button.isEnabled = false
-            buttons.add(button)
+        buttons.clear()
+        (0 until amountOfButtons()).forEach { i ->
+            buttons
+                .add(Button(context)
+                    .also {
+                        it.text = "$i"
+                        it.id = i
+                        it.tag = true
+                        it.setOnClickListener { view -> onButtonClick(view) }
+                        it.isEnabled = false
+                    }
+                )
         }
     }
 
     private fun addButtonsToTable() {
-        buttons.forEach { btn -> binding.tableLayout.addView(btn) }
+        buttons.forEach { btn ->
+            run {
+                val randNumber = Random().nextInt(amountOfButtons())
+                val row = binding.tableLayout.getChildAt(randNumber) as TableRow
+                row.addView( btn, 350, 250 );
+            }
+        }
     }
 
 
@@ -90,8 +98,8 @@ class FirstFragment : Fragment() {
             clicks++
             endTimer = System.nanoTime() - startTimer
             // set textViewElapsedTime.text to endTimer in seconds
-            binding.textViewElapsedTime.text =
-                resources.getString(R.string.elapsed_time, "%.2f".format(endTimer / 1000F))
+            binding.textViewElapsedTime.text = resources.getString(R.string.elapsed_time, "%.2f".format(endTimer / 1000F))
+            totalTime += endTimer
         }
     }
 
@@ -104,20 +112,22 @@ class FirstFragment : Fragment() {
 
     private fun endGame() {
         clicks = 0
-        buttons.forEach { btn -> btn.setBackgroundColor(android.R.drawable.btn_default) }
+        buttons.forEach { btn -> btn.setBackgroundColor(android.R.drawable.btn_default); btn.isEnabled = false }
         binding.buttonStart.isEnabled = true
+        binding.textViewElapsedTime.text = totalTime.toString()
     }
 
     private fun gameContinues() {
         if (clicks >= amountOfButtons()) {
+            endGame()
+        } else {
             val randomNumber = (1 until amountOfButtons()).random()
-            buttons[randomNumber].setBackgroundColor(resources.getColor(R.color.purple_200))
+            buttons[randomNumber]
+                .setBackgroundColor(resources.getColor(R.color.purple_200))
                 .also {
                     buttons[randomNumber].tag = true
                 }
             startTimer = System.nanoTime()
-        } else {
-            endGame()
         }
     }
 
