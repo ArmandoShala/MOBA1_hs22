@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      display: grid;
+      place-items: center;
+    }
+
+    #arrow {
+      max-width: 50%;
+      max-height: 50%;
+      display: grid;
+      place-items: center;
+    }
+  </style>
+
+
+</head>
+<body>
+<div class="center">
+  <div class="center__inner">
+    <img src="img/arrow.png" alt="arrow" id="arrow">
+  </div>
+</div>
+
+
+<script>
+  window.addEventListener("deviceorientation", handleOrientation, true);
+
+  function handleOrientation(event) {
+    const absolute = event.absolute;
+    const alpha = event.alpha; // explain: https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation
+    const beta = event.beta;
+    const gamma = event.gamma;
+
+    document.getElementById("arrow").style.transform = "rotateZ(" + gamma + "deg)";
+    // document.getElementById("arrow").style.transform = "rotateZ(" + alpha + "deg)";
+  }
+
+</script>
+
+
+</body>
+</html>
