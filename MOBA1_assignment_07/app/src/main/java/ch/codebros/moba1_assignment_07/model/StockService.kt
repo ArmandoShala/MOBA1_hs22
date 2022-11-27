@@ -12,7 +12,8 @@ class StockService {
     fun callStocksAPI(context: Context): List<Stock> {
         val requestQueue = Volley.newRequestQueue(context);
         var apiKey = "IBM&apikey=YHT167YZ7Z121D55";
-        val url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol";
+        val baseURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol";
+        val url = "$baseURL=$apiKey";
         val items = mutableListOf<Stock>();
         requestQueue.add(StringRequest(
             com.android.volley.Request.Method.GET, url,
