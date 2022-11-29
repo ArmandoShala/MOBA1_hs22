@@ -1,0 +1,12 @@
+#imgWrapper {
+    margin: 10px;
+}
+
+.big {
+    width: 100vw !important;
+    max-width: 100vw !important;
+}
+.small {
+    width: 50vw !important;
+    max-width: 50vw !important;
+}

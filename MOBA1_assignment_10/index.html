@@ -1,20 +1,39 @@
-<!doctype html>
-<html lang="de-ch">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>MOBA1 P10</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/main.css">
+    <meta charset="UTF-8">
+    <title>P11 MOBA1 Web</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
-
 <body>
-  <div class="center">
-    <div class="center__inner">
-      <img src="img/arrow.png" alt="arrow" class="arrow" id="arrow1" >
-    </div>
-  </div>
-  <script src="js/main.js"></script>
-</body>
 
+<!--<img-->
+<!--        alt="alt"-->
+<!--        class="imgSecond"-->
+<!--        sizes="100vw"-->
+<!--        srcset="-->
+<!--            images/img_504p.jpg   504w,-->
+<!--            images/img_1008p.jpg 1008w,-->
+<!--            images/img_2016p.jpg 2016w,-->
+<!--            images/img_4032p.jpg 2500w-->
+<!--        "-->
+<!--        src="images/img_1008p.jpg"-->
+<!--&gt;-->
+
+<div id="imgWrapper" class="big">
+    <picture id="img">
+        <source class="big" srcset="images/img_4032p.jpg" media="(min-width: 1312px)"/>
+        <source class="big" srcset="images/img_2016p.jpg" media="(min-width: 992px)"/>
+        <source class="big" srcset="images/img_1008p.jpg" media="(min-width: 688px)"/>
+        <source class="big" srcset="images/img_504p.jpg" media="(min-width: 332px)"/>
+        <img src="images/img_1008p.jpg" alt="img"/>
+    </picture>
+</div>
+
+
+<br/>
+<button onclick="toggleClass()">toggle class</button>
+<p id="currClass"></p>
+</body>
 </html>
