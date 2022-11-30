@@ -1,0 +1,59 @@
+* {
+    padding: 4px;
+    font-family: sans-serif;
+}
+
+.header, #myForm, .footer {
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.header {
+    background: whitesmoke;
+}
+
+#myForm {
+    background: lightgray;
+}
+
+.footer {
+    background: gray;
+}
+
+
+#myForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: lightgray;
+}
+
+@media screen and (orientation: landscape) {
+    #myForm {
+        flex-direction: row;
+    }
+
+    .header {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    /*There is a weird behavior at around 800px width, where the fields are not properly visible.
+    To fix this, use the following code: (max-width: 800px)
+     */
+    #myForm {
+        flex-direction: column;
+    }
+
+    .header {
+        font-size: 1.5rem;
+    }
+
+    #myButton {
+        width: 100%;
+    }
+}

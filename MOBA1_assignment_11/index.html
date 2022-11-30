@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>P11</title>
+    <script src="script.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <p id="currOrientation"></p>
+</div>
+<div class="content">
+    <form id="myForm">
+        <label class="flex-item" for="name" >Name:</label>
+        <input type="text" id="name" name="name" required class="flex-item">
+        <br>
+        <label class="flex-item" for="email">Email:</label>
+        <input type="email" id="email" name="email" required class="flex-item">
+        <br>
+        <label class="flex-item" for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required class="flex-item">
+        <br>
+        <label class="flex-item" for="message">Message:</label>
+        <textarea id="message" name="message" required class="flex-item"></textarea>
+        <br>
+    </form>
+</div>
+<div class="footer">
+    <input id="myButton" type="submit" value="Submit" form="myForm">
+</div>
+
+
+</body>
+</html>
