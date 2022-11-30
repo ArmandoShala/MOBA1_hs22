@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>P11 MOBA1 Web</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-<body>
 
-<!--<img-->
-<!--        alt="alt"-->
-<!--        class="imgSecond"-->
-<!--        sizes="100vw"-->
-<!--        srcset="-->
-<!--            images/img_504p.jpg   504w,-->
-<!--            images/img_1008p.jpg 1008w,-->
-<!--            images/img_2016p.jpg 2016w,-->
-<!--            images/img_4032p.jpg 2500w-->
-<!--        "-->
-<!--        src="images/img_1008p.jpg"-->
-<!--&gt;-->
+<body style="overflow-x: hidden">
+<label class="switch">
+    <input type="checkbox" id="togBtn" onchange="toggleClass()" checked>
+    <div class="slider round">
+        <!--ADDED HTML -->
+        <span class="on">big</span>
+        <span class="off">smol</span>
+        <!--END-->
+    </div>
+</label>
+<br />
+<!--<img alt="alt" id="exampleImage" class="big" srcset="-->
+<!--                   images/img_504p.jpg   504w,-->
+<!--                   images/img_1008p.jpg 1008w,-->
+<!--                   images/img_2016p.jpg 2016w,-->
+<!--                   images/img_4032p.jpg 2500w-->
+<!--               " src="images/img_1008p.jpg">-->
 
-<div id="imgWrapper" class="big">
-    <picture id="img">
-        <source class="big" srcset="images/img_4032p.jpg" media="(min-width: 1312px)"/>
-        <source class="big" srcset="images/img_2016p.jpg" media="(min-width: 992px)"/>
-        <source class="big" srcset="images/img_1008p.jpg" media="(min-width: 688px)"/>
-        <source class="big" srcset="images/img_504p.jpg" media="(min-width: 332px)"/>
-        <img src="images/img_1008p.jpg" alt="img"/>
-    </picture>
-</div>
+<picture id="img" style="width:inherit">
+    <source class="big" srcset="images/img_4032p.jpg" media="(min-width: 1312px)" />
+    <source class="big" srcset="images/img_2016p.jpg" media="(min-width: 992px)" />
+    <source class="big" srcset="images/img_1008p.jpg" media="(min-width: 688px)" />
+    <source class="big" srcset="images/img_504p.jpg" media="(min-width: 332px)" />
+    <img src="images/img_1008p.jpg" alt="img" id="exampleImage" class="big" />
+</picture>
 
-
-<br/>
-<button onclick="toggleClass()">toggle class</button>
-<p id="currClass"></p>
 </body>
+
 </html>
