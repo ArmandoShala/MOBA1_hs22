@@ -1,47 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <style>
-    body {
-      display: grid;
-      place-items: center;
-    }
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    #arrow {
-      max-width: 50%;
-      max-height: 50%;
-      display: grid;
-      place-items: center;
-    }
-  </style>
-
-
+        img {
+            transform: rotate(0deg);
+        }
+    </style>
 </head>
 <body>
-<div class="center">
-  <div class="center__inner">
-    <img src="img/arrow.png" alt="arrow" id="arrow">
-  </div>
-</div>
-
+<img id="arrow" src="img/arrow.png"/>
 
 <script>
-  window.addEventListener("deviceorientation", handleOrientation, true);
+    var arrow = document.getElementById('arrow');
 
-  function handleOrientation(event) {
-    const absolute = event.absolute;
-    const alpha = event.alpha; // explain: https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation
-    const beta = event.beta;
-    const gamma = event.gamma;
+    window.addEventListener('deviceorientation', function (event) {
+        var alpha = event.alpha;
+        var beta = event.beta;
+        var gamma = event.gamma;
 
-    document.getElementById("arrow").style.transform = "rotateZ(" + gamma + "deg)";
-    // document.getElementById("arrow").style.transform = "rotateZ(" + alpha + "deg)";
-  }
-
+        arrow.style.transform = 'rotate(' + alpha + 'deg) rotate3d(1,0,0, ' + (beta * -1) + 'deg) rotate3d(0,1,0, ' + gamma + 'deg)';
+    });
 </script>
-
-
 </body>
 </html>
